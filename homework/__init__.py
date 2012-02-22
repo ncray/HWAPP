@@ -4,7 +4,7 @@ import os
 hws = []
 
 # extract homework object from each .py file in directory
-for filename in os.listdir('./homework'):
+for filename in os.listdir('/home/ncray/hwapp/homework'):
     if filename[-3:]=='.py' and filename!='__init__.py':
         module = filename[:-3]
         try:
