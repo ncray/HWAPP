@@ -1,0 +1,39 @@
+<head>
+  <title>{{name}}</title>
+  <link rel='stylesheet' type='text/css' 
+	href='{{ url_for('static',filename='jemdoc.css') }}'>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">
+  </script>
+
+  <script src='{{ url_for('static',filename='hw.js') }}'></script>
+</head>
+
+<body>
+<table id='tlayout'>
+<tr valign='top'>
+<td id='layout-content'>
+
+  <div id='toptitle'>
+    <h1>{{name}}</h1>
+  </div>
+
+    {% for q in questions %}
+    <div id='question'>
+      <h2>Question {{ loop.index }} </h2>
+	<h3>Score: <span id="points">0</span>/{{ q.points }} Points</h3>
+      <form method='POST' action='q/{{ loop.index0 }}'>
+	<p>{{ q.parse()|safe }}</p>
+      </form>
+      <div class='infoblock'>
+	<div class='blocktitle'>Comments</div>
+	<div class='blockcontent'>
+	  <p id='comments'></p>
+	</div>
+      </div>
+    </div>
+    {% endfor %}
+
+</td>
+</tr>
+</table>
+</body>

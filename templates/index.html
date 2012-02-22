@@ -1,0 +1,30 @@
+<head>
+  <title>{{name}}</title>
+  <link rel='stylesheet' type='text/css' 
+	href='{{ url_for('static',filename='jemdoc.css') }}'>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+  </script>
+
+</head>
+
+<body>
+  <table id='tlayout'>
+    <tr valign='top'>
+      <td id='layout-content'>
+
+	{% if hws %}
+	  <div id='toptitle'>
+	    <h1>Available Homeworks</h1>
+	  </div>
+	  <div id='infoblock'>
+	    {% for hw in hws %}
+	      <p><a href='hw/{{hw.id}}/'> {{hw.name}} </a></p>
+	    {% endfor %}
+	  </div>
+	{% else %}
+	  <p>No homeworks are available.</p>
+	{% endif %}
+      </td>
+    </tr>
+  </table>
+</body>
